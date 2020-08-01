@@ -1,0 +1,31 @@
+{% include "header.html" %}
+{% include "topnav.html" %}
+{% include "sidenav.html" %}
+            <div id="layoutSidenav_content">
+                <main>
+                    <div class="container-fluid">
+                        <h1 class="mt-4">World Map</h1>
+                        <ol class="breadcrumb mb-4">
+                            <li class="breadcrumb-item active">Data for overlayed on an interactive world map</li>
+                        </ol>
+                        <div class="row">
+                            <div class="col-xl-12">
+                                <div class="card mb-4">
+                                    <div class="card-header">
+                                        <i class="fas fa-globe mr-1"></i>
+                                        Map
+                                    </div>
+                                    <div class="card-body">
+                                        {{ worldMap | safe }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+                {% include "footer.html" %}
+            </div>
+        </div>
+
+    </body>
+</html>

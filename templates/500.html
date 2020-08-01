@@ -1,0 +1,26 @@
+{% include "header.html" %}
+        <div id="layoutError">
+            <div id="layoutError_content">
+                <main>
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-12">
+                                <div class="mt-4">
+                                    <h1 class="text-center display-1">500</h1>
+                                    <p class="text-center lead">Server is being a tad fussy.</p>
+                                    <hr>
+                                    <p class="text-center lead">This is most likely caused by the dataset being updated</p>
+                                    {{ errorMessage | safe }}
+                                    <p class="text-center lead">Please try again after a while</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+            <div id="layoutError_footer">
+                {% include "footer.html" %}
+            </div>
+        </div>
+    </body>
+</html>

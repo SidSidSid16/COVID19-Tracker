@@ -1,0 +1,74 @@
+{% include "header.html" %}
+{% include "topnav.html" %}
+{% include "sidenav.html" %}
+            <div id="layoutSidenav_content">
+                <main>
+                    <div class="container-fluid">
+                        <h1 class="mt-4">About This Project</h1>
+                        <ol class="breadcrumb mb-4">
+                            <li class="breadcrumb-item active">All about this project</li>
+                        </ol>
+                        <div class="row">
+                            <div class="col-xl-12">
+                                <div class="card mb-4">
+                                    <div class="card-header">
+                                        <i class="fas fa-hand-sparkles mr-1"></i>
+                                        Hi there
+                                    </div>
+                                    <div class="card-body">
+                                        Nice to meet you. In these unforseen and dark times with the ongoing pandemic taking innocent lives, the best thing to do is isolate youself. 
+                                        Reduce the risk of infection and spreading the virus, stay at home!
+                                        <br><br>
+                                        Staying at home for months on end can take a toll, mentally and physically. It's best only look at the positives, we are never gonna get these times back, 
+                                        as soon as the pandemic ends, life is going to carry on back to normal. The never ending cycle of wake-up, work, sleep. Let's take this time to stay at home, 
+                                        relax, learn a new skill, stay close to family. Reflect on the fact that life is so fragile, temporary and unforgiving. Cherish the limited time you have.
+                                        <br><br>
+                                        On the topic of learning a new skill, this is what I've done. I am learning Python, with the aims of becoming a confident full-stack programmer. 
+                                        Programming is a fun hobby and I think that everyone should know at least one language. This is my first ever fully-fledged Python program. I'm proud of it, 
+                                        however, I know that the code is terrible. You can help me out. <a href="https://www.sidsidsid.cf/contact/" target="_blank">Click here</a> to contact me. 
+                                        <a href="https://github.com/SidSidSid16/COVID19-Tracker" target="_blank">Click here</a> to go to the repository where the source code is hosted
+                                    </div>
+                                </div>
+                                <div class="card mb-4">
+                                    <div class="card-header">
+                                        <i class="fas fa-file-csv mr-1"></i>
+                                        The COVID-19 Dataset That I Am Using
+                                    </div>
+                                    <div class="card-body">
+                                        I am using a dataset provided and maintained by Microsoft Bing. You can access it by <a href="https://github.com/microsoft/Bing-COVID-19-Data" target="_blank">clicking here</a>. 
+                                        This dataset consists of around 500k rows, more rows (like hundreds of them) are added everyday. For the most part, it's alright to use. However, there are so many
+                                        inconsistencies. Why didn't I use an API? Well, all of them are paid. The free ones have ludicrous rate-limiting. In fairness, this project is extremely small scale, 
+                                        I doubt I'll get any more than 5 unique visitors per month, so the rate-limited APIs would've worked great. But, I wanted to try out Pandas and see how it and 
+                                        Python works with enormous datasets such as this.
+                                        <br><br>
+                                        Before I forget, there is a <a href="https://github.com/microsoft/Bing-COVID-19-Data/blob/master/LICENSE.txt" target="_blank">license</a> that Bing has provided that I need to comply with. 
+                                        As per this license I need to add a link to the Bing COVID-19 dashboard, so, <a href="https://www.bing.com/covid" rel=”nofollow” target="_blank">here it is.</a>
+                                        <br><br>
+                                        A huge let down, as I was expecting this dataset to hold an open-source license, instead it holds a really controlling one. It really is sad to see big companies such as Microsoft 
+                                        take advantage of their size to hurt smaller companies and people. The quality of this dataset is quite debatable too, a huge about of inconsistencies, to put it simply, 
+                                        a Microsoft employee probably built a simple web scraper which dumps numbers into a .csv file. The greed for money is a vicious circle I guess.
+                                        <br><br>
+                                        But it doesn't matter. This program runs fairly well I suppose.
+                                    </div>
+                                </div>
+                                <div class="card mb-4">
+                                    <div class="card-header">
+                                        <i class="fas fa-tools mr-1"></i>
+                                        Other Tools Which This Program Runs on
+                                    </div>
+                                    <div class="card-body">
+                                        I am fairly experienced in web development, but, I'm lazy. I am using the <a href="https://github.com/StartBootstrap/startbootstrap-sb-admin" target="_blank">SB Admin</a> Bootstrap template,
+                                        which I have mostly editted to suit the layout that I had in mind. It is wonderful to use, and, it's fully open-source (MIT License), too! This program is built using Python 
+                                        with the Flask web-app framework.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+                {% include "footer.html" %}
+            </div>
+        </div>
+
+    </body>
+</html>
