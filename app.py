@@ -55,7 +55,7 @@ def initialise():
     allCountriesTableCreate()
     print("Dataset Loaded!")
     is_initialising = False
-    threading.Timer(180, initialise).start()
+    threading.Timer(18000, initialise).start()
 
 latestDatasetDate = None
 latestDatasetDateText = None
