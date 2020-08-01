@@ -72,18 +72,21 @@ totalCasesWorldwide = None
 def getTotalCases(country = "Worldwide"):
     global totalCasesWorldwide
     totalCasesWorldwide = df_entireDatasetSorted[df_entireDatasetSorted.Country_Region == country].iloc[0]['Confirmed']
+    totalCasesWorldwide = "{:,}".format(totalCasesWorldwide)
     return totalCasesWorldwide
 
 totalDeathsWorldwide = None
 def getTotalDeaths(country = "Worldwide"):
     global totalDeathsWorldwide
     totalDeathsWorldwide = df_entireDatasetSorted[df_entireDatasetSorted.Country_Region == country].iloc[0]['Deaths']
+    totalDeathsWorldwide = "{:,}".format(totalDeathsWorldwide)
     return totalDeathsWorldwide
 
 totalRecoveredWorldwide = None
 def getTotalRecovered(country = "Worldwide"):
     global totalRecoveredWorldwide
     totalRecoveredWorldwide = df_entireDatasetSorted[df_entireDatasetSorted.Country_Region == country].iloc[0]['Recovered']
+    totalRecoveredWorldwide = "{:,}".format(totalRecoveredWorldwide)
     return totalRecoveredWorldwide
 
 worstHitCountry = None  
