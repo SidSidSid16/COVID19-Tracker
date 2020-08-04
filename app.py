@@ -156,17 +156,17 @@ def createWorldCasesChart():
     legend = 'Cases Worldwide'
     country = "Worldwide"
     df = df_entireDataset.copy()
+    df.query('Country_Region == @country', inplace=True)
     df.sort_values(by=['Updated'], inplace=True, ascending=False)
     first = df.iloc[0]['Updated']
     df.sort_values(by=['Updated'], inplace=True, ascending=True)
-    last = df.iloc[0]['Updated']    
+    last = df.iloc[0]['Updated']
     diff = ((first - last)/numpy.timedelta64(1, 'M'))
     diff = int(diff) + 1
-    months = numpy.arange(1, diff, 1)
+    months = numpy.arange(1, diff+1, 1)
     cases = []
     deaths = []
     df = df_entireDataset.copy()
-    df.query('Country_Region == @country', inplace=True)
     for month in months:
         day = monthrange(2020, month)[1]
         date = pandas.Timestamp(year=2020, month=month, day=day)
