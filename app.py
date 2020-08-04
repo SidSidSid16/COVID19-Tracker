@@ -1,4 +1,4 @@
-from flask import Flask, render_template, json, redirect, url_for, abort, Markup
+from flask import Flask, render_template, json, redirect, url_for, abort, Markup, request
 import time
 import threading
 from threading import Thread, Event
@@ -191,12 +191,12 @@ def createWorldCasesChart():
 
 def make_hyperlink(value):
     if value != "China":
-        url = "/places/{}"
+        url = "/places?place={}"
         # return '=HYPERLINK("%s", "%s")' % (url.format(value), value)
         return u'<a href="%s">%s</a>' % (url.format(value), value)
     else:
         value = "China (mainland)"
-        url = "/places/China (mainland)"
+        url = "/places?place=China (mainland)"
         # return '=HYPERLINK("%s", "%s")' % (url.format(value), value)
         return u'<a href="%s">China</a>' % (url.format(value))
 
@@ -254,7 +254,11 @@ def homepage():
 
 @app.route('/places')
 def places_overview():
-    return render_template("places_overview.html", totalCases = totalCasesWorldwide, totalDeaths = totalDeathsWorldwide, totalRecovered = totalRecoveredWorldwide, worstHitCountry = worstHitCountry, worldMap = worldMap._repr_html_(), tables = allCountriesTable, labels=json.dumps(labels), WorldwideCases=json.dumps(WorldwideCases), WorldwideDeaths=json.dumps(WorldwideDeaths))
+    place = request.args.get('place')
+    if place == None:
+        return render_template("places_overview.html", totalCases = totalCasesWorldwide, totalDeaths = totalDeathsWorldwide, totalRecovered = totalRecoveredWorldwide, worstHitCountry = worstHitCountry, worldMap = worldMap._repr_html_(), tables = allCountriesTable, labels=json.dumps(labels), WorldwideCases=json.dumps(WorldwideCases), WorldwideDeaths=json.dumps(WorldwideDeaths))
+    else:
+        return places(place)
 
 def inner_region(inner_region): 
     allInnerRegionData = df_entireDatasetSorted.query('AdminRegion2 == @inner_region')
@@ -290,7 +294,7 @@ def inner_region(inner_region):
         tooltip = inner_region
         popUp = "<i><b>"+inner_region+"</b>"+"\n\n\n"+"Confirmed: \n"+confirmed+"\n\n"+"Deaths: \n"+deaths+"\n\n"+"Recovered: \n"+recovered+"\n\n"+"Last updated: \n"+updatedText+"</i>"
         folium.Marker([latitudeRegion, longitudeRegion], popup=popUp, tooltip=tooltip).add_to(map)
-    return render_template("place.html", placeNameFull = regionsFullName, placeName = regionName, latestDate = lastupdated.strftime('%d/%m/%Y'), totalCases = totalcases, totalDeaths = totalDeaths, totalRecovered = totalRecovered, placeMap = map._repr_html_())
+    return render_template("place.html", placeNameFull = regionsFullName, placeName = regionName, latestDate = lastupdated.strftime('%d/%m/%Y'), totalCases = "{:,}".format(totalcases), totalDeaths = "{:,}".format(totalDeaths), totalRecovered = "{:,}".format(totalRecovered), placeMap = map._repr_html_())
 
 def outer_region(outer_region): 
     allOuterRegionData = df_entireDatasetSorted.query('AdminRegion1 == @outer_region')
@@ -324,7 +328,7 @@ def outer_region(outer_region):
             tooltip = region
             popUp = "<i><b>"+region+"</b>"+"\n\n\n"+"Confirmed: \n"+confirmed+"\n\n"+"Deaths: \n"+deaths+"\n\n"+"Recovered: \n"+recovered+"\n\n"+"Last updated: \n"+updatedText+"</i>"
             folium.Marker([latitudeRegion, longitudeRegion], popup=popUp, tooltip=tooltip).add_to(map)
-    return render_template("place.html", placeNameFull = regionsFullName, placeName = regionName, latestDate = lastupdated.strftime('%d/%m/%Y'), totalCases = totalcases, totalDeaths = totalDeaths, totalRecovered = totalRecovered, placeMap = map._repr_html_())
+    return render_template("place.html", placeNameFull = regionsFullName, placeName = regionName, latestDate = lastupdated.strftime('%d/%m/%Y'), totalCases = "{:,}".format(totalcases), totalDeaths = "{:,}".format(totalDeaths), totalRecovered = "{:,}".format(totalRecovered), placeMap = map._repr_html_())
 
 def country(country): 
     allCountryData = df_entireDatasetSorted.query('Country_Region == @country')
@@ -356,10 +360,11 @@ def country(country):
             tooltip = region
             popUp = "<i><b>"+region+"</b>"+"\n\n\n"+"Confirmed: \n"+confirmed+"\n\n"+"Deaths: \n"+deaths+"\n\n"+"Recovered: \n"+recovered+"\n\n"+"Last updated: \n"+updatedText+"</i>"
             folium.Marker([latitudeRegion, longitudeRegion], popup=popUp, tooltip=tooltip).add_to(map)
-    return render_template("place.html", placeNameFull = country, placeName = country, latestDate = lastupdated.strftime('%d/%m/%Y'), totalCases = totalcases, totalDeaths = totalDeaths, totalRecovered = totalRecovered, placeMap = map._repr_html_())
+    return render_template("place.html", placeNameFull = country, placeName = country, latestDate = lastupdated.strftime('%d/%m/%Y'), totalCases = "{:,}".format(totalcases), totalDeaths = "{:,}".format(totalDeaths), totalRecovered = "{:,}".format(totalRecovered), placeMap = map._repr_html_())
 
-@app.route("/search/<place>")
-def search(place):
+@app.route("/search")
+def search():
+    place = request.args['place']
     originalPlace = place
     countries = arr_allCountries.tolist()
     countries = [item.lower() for item in countries]
@@ -404,11 +409,11 @@ def search(place):
             df_SuggestedCountriesHTML=[df_SuggestedCountries.to_html(classes=['404-suggestions-data', 'table', 'table-striped', 'table-borderless'], header="true", justify='left', render_links=True, escape=False)]
             df_SuggestedRegions1HTML=[df_SuggestedRegions1.to_html(classes=['404-suggestions-data', 'table', 'table-striped', 'table-borderless'], header="true", justify='left', render_links=True, escape=False)]
             df_SuggestedRegions2HTML=[df_SuggestedRegions2.to_html(classes=['404-suggestions-data', 'table', 'table-striped', 'table-borderless'], header="true", justify='left', render_links=True, escape=False)]
-            return render_template('search-suggestions.html', searchTerm = place, tblCountries = df_SuggestedCountriesHTML, tblRegions1 = df_SuggestedRegions1HTML, tblRegions2 = df_SuggestedRegions2HTML)
+            return render_template('404-suggestions.html', searchTerm = place, tblCountries = df_SuggestedCountriesHTML, tblRegions1 = df_SuggestedRegions1HTML, tblRegions2 = df_SuggestedRegions2HTML)
     return render_template("place.html")
 
-@app.route("/places/<place>")
-def profile(place):
+# @app.route("/places/<place>")
+def places(place):
     originalPlace = place
     countries = arr_allCountries.tolist()
     countries = [item.lower() for item in countries]
@@ -426,34 +431,7 @@ def profile(place):
     elif place in regions2:
         return inner_region(place.title())
     else:
-        closeMatchCountry = get_close_matches(place, countries, n=5, cutoff=0.1)
-        closeMatchRegion1 = get_close_matches(place, regions1, n=5, cutoff=0.1)
-        closeMatchRegion2 = get_close_matches(place, regions2, n=5, cutoff=0.1)
-        df_SuggestedCountries = pandas.DataFrame(closeMatchCountry)
-        df_SuggestedRegions1 = pandas.DataFrame(closeMatchRegion1)
-        df_SuggestedRegions2 = pandas.DataFrame(closeMatchRegion2)
-        if (df_SuggestedCountries.shape[0] == 0 & df_SuggestedRegions1.shape[0] == 0 & df_SuggestedRegions2.shape[0] == 0):
-            abort(404)
-        else:
-            df_SuggestedCountries.index.name = '#'
-            df_SuggestedCountries.columns.name = df_SuggestedCountries.index.name
-            df_SuggestedCountries.index.name = None
-            df_SuggestedRegions1.index.name = '#'
-            df_SuggestedRegions1.columns.name = df_SuggestedRegions1.index.name
-            df_SuggestedRegions1.index.name = None
-            df_SuggestedRegions2.index.name = '#'
-            df_SuggestedRegions2.columns.name = df_SuggestedRegions2.index.name
-            df_SuggestedRegions2.index.name = None
-            df_SuggestedCountries.rename(columns={0: "Country"}, inplace=True)
-            df_SuggestedRegions1.rename(columns={0: "Outer Region"}, inplace=True)
-            df_SuggestedRegions2.rename(columns={0: "Inner Region"}, inplace=True)
-            df_SuggestedCountries[u'Country'] = df_SuggestedCountries[u'Country'].apply(lambda x: make_hyperlink(x))
-            df_SuggestedRegions1[u'Outer Region'] = df_SuggestedRegions1[u'Outer Region'].apply(lambda x: make_hyperlink(x))
-            df_SuggestedRegions2[u'Inner Region'] = df_SuggestedRegions2[u'Inner Region'].apply(lambda x: make_hyperlink(x))
-            df_SuggestedCountriesHTML=[df_SuggestedCountries.to_html(classes=['404-suggestions-data', 'table', 'table-striped', 'table-borderless'], header="true", justify='left', render_links=True, escape=False)]
-            df_SuggestedRegions1HTML=[df_SuggestedRegions1.to_html(classes=['404-suggestions-data', 'table', 'table-striped', 'table-borderless'], header="true", justify='left', render_links=True, escape=False)]
-            df_SuggestedRegions2HTML=[df_SuggestedRegions2.to_html(classes=['404-suggestions-data', 'table', 'table-striped', 'table-borderless'], header="true", justify='left', render_links=True, escape=False)]
-            return render_template('404-suggestions.html', searchTerm = place, tblCountries = df_SuggestedCountriesHTML, tblRegions1 = df_SuggestedRegions1HTML, tblRegions2 = df_SuggestedRegions2HTML), 404
+        abort(404)
     return render_template("place.html")
 
 @app.route("/world-map")
@@ -493,6 +471,10 @@ def server_error(e):
 @app.errorhandler(404)
 def not_found(e):
     return render_template('404.html'), 404
+
+@app.errorhandler(400)
+def not_found(e):
+    return render_template('400.html'), 400
 
 def start_initialise():
     initialise()

@@ -18,7 +18,7 @@
                                                 <h1 class="card-text">{{ totalCases }}</h1>
                                             </div>
                                             <div class="card-footer d-flex align-items-center justify-content-between">
-                                                <a class="small text-white stretched-link" href="/places/worldwide">View Details</a>
+                                                <a class="small text-white stretched-link" href="/places?place=worldwide">View Details</a>
                                                 <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                                             </div>
                                         </div>
@@ -30,7 +30,7 @@
                                                 <h1 class="card-text">{{ totalDeaths }}</h1>
                                             </div>
                                             <div class="card-footer d-flex align-items-center justify-content-between">
-                                                <a class="small text-white stretched-link" href="/places/worldwide">View Details</a>
+                                                <a class="small text-white stretched-link" href="/places?place=worldwide">View Details</a>
                                                 <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                                             </div>
                                         </div>
@@ -43,7 +43,7 @@
                                                 <h1 class="card-text">{{ totalRecovered }}</h1>
                                             </div>
                                             <div class="card-footer d-flex align-items-center justify-content-between">
-                                                <a class="small text-white stretched-link" href="/places/worldwide">View Details</a>
+                                                <a class="small text-white stretched-link" href="/places?place=worldwide">View Details</a>
                                                 <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                                             </div>
                                         </div>
@@ -55,7 +55,7 @@
                                                 <h1 class="card-text">{{ worstHitCountry }}</h1>
                                             </div>
                                             <div class="card-footer d-flex align-items-center justify-content-between">
-                                                <a class="small text-white stretched-link" href="/places/{{ worstHitCountry }}">View Details</a>
+                                                <a class="small text-white stretched-link" href="/places?place={{ worstHitCountry }}">View Details</a>
                                                 <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                                             </div>
                                         </div>
@@ -148,7 +148,7 @@
                                             }],
                                             },
                                             legend: {
-                                            display: false
+                                            display: true
                                             }
                                         }
                                         });
@@ -171,6 +171,22 @@
                                     <div class="card-footer d-flex align-items-center justify-content-between">
                                         <a class="small text-body" href="/feature-request" target="_blank">Learn more</a>
                                         <div class="small"><i class="fas fa-angle-right"></i></div>
+                                    </div>
+                                </div>
+                                <div class="card mb-4">
+                                    <div class="card-header">
+                                        <i class="fas fa-plus mr-1"></i>
+                                        Search for a Place
+                                    </div>
+                                    <div class="card-body">
+                                        <form action="/search" method="get" id="search_form" class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0 input-group">
+                                            <div class="input-group">
+                                                <input class="form-control" type="text" name="place" placeholder="Search for a place..." aria-label="Search" aria-describedby="basic-addon2" />
+                                                <div class="input-group-append">
+                                                    <button class="btn btn-primary" type="submit" value="Submit"><i class="fas fa-search"></i></button>
+                                                </div>
+                                            </div>
+                                        </form>
                                     </div>
                                 </div>
                             </div>

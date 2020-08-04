@@ -3,18 +3,11 @@
         <a class="navbar-brand" href="index.html">COVID-19 Dashboard</a>
         <button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i class="fas fa-bars"></i></button>
         <!-- Navbar Search-->
-        <form onsubmit="search()" id="search_form" class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
+        <form action="/search" method="get" id="search_form" class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
             <div class="input-group">
-                <!-- <script>
-                    function search(){
-                        var action_src = "/search/" + document.getElementsByName("txt_search")[0].value;
-                        var your_form = document.getElementById('search_form');
-                        search_form.action = action_src;
-                    }
-                </script> -->
-                <input class="form-control" type="text" name="txt_search" placeholder="Search for a place..." aria-label="Search" aria-describedby="basic-addon2" />
+                <input class="form-control" type="text" name="place" placeholder="Search for a place..." aria-label="Search" aria-describedby="basic-addon2" />
                 <div class="input-group-append">
-                    <button class="btn btn-primary" type="button"><i class="fas fa-search"></i></button>
+                    <button class="btn btn-primary" type="submit" value="Submit"><i class="fas fa-search"></i></button>
                 </div>
             </div>
         </form>
