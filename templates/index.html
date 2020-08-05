@@ -8,62 +8,54 @@
                         <ol class="breadcrumb mb-4">
                             <li class="breadcrumb-item active">Data last updated on {{ latestDate }}</li>
                         </ol>
-                        <div class="row h-100 pb-4">
-                            <div class="col-xl-6">
-                                <div class="row h-100">
-                                    <div class="col-xl-6 col-md-12">
-                                        <div class="card bg-primary text-white h-100">
-                                            <div class="card-body">
-                                                <h5 class="card-title">Total Cases:</h5>
-                                                <h1 class="card-text">{{ totalCases }}</h1>
-                                            </div>
-                                            <div class="card-footer d-flex align-items-center justify-content-between">
-                                                <a class="small text-white stretched-link" href="/places?place=worldwide">View Details</a>
-                                                <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                                            </div>
-                                        </div>
+                        <div class="row">
+                            <div class="col-xl-3">
+                                <div class="card bg-primary text-white mb-4">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Total Cases:</h5>
+                                        <h1 class="card-text">{{ totalCases }}</h1>
                                     </div>
-                                    <div class="col-xl-6 col-md-12">
-                                        <div class="card bg-danger text-white h-100">
-                                            <div class="card-body">
-                                                <h5 class="card-title">Total Deaths:</h5>
-                                                <h1 class="card-text">{{ totalDeaths }}</h1>
-                                            </div>
-                                            <div class="card-footer d-flex align-items-center justify-content-between">
-                                                <a class="small text-white stretched-link" href="/places?place=worldwide">View Details</a>
-                                                <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                                            </div>
-                                        </div>
+                                    <div class="card-footer d-flex align-items-center justify-content-between">
+                                        <a class="small text-white stretched-link" href="/places?place=worldwide">View Details</a>
+                                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                                     </div>
-                                    <div class="w-100"></div>
-                                    <div class="col-xl-6 col-md-12">
-                                        <div class="card bg-success text-white h-100">
-                                            <div class="card-body">
-                                                <h5 class="card-title">Total Recovered:</h5>
-                                                <h1 class="card-text">{{ totalRecovered }}</h1>
-                                            </div>
-                                            <div class="card-footer d-flex align-items-center justify-content-between">
-                                                <a class="small text-white stretched-link" href="/places?place=worldwide">View Details</a>
-                                                <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                                            </div>
-                                        </div>
+                                </div>
+                                <div class="card bg-danger text-white mb-4">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Total Deaths:</h5>
+                                        <h1 class="card-text">{{ totalDeaths }}</h1>
                                     </div>
-                                    <div class="col-xl-6 col-md-12">
-                                        <div class="card bg-warning text-white h-100">
-                                            <div class="card-body">
-                                                <h5 class="card-title">Worst Hit Country:</h5>
-                                                <h1 class="card-text">{{ worstHitCountry }}</h1>
-                                            </div>
-                                            <div class="card-footer d-flex align-items-center justify-content-between">
-                                                <a class="small text-white stretched-link" href="/places?place={{ worstHitCountry }}">View Details</a>
-                                                <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                                            </div>
-                                        </div>
+                                    <div class="card-footer d-flex align-items-center justify-content-between">
+                                        <a class="small text-white stretched-link" href="/places?place=worldwide">View Details</a>
+                                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                                     </div>
                                 </div>
                             </div>
+                            <div class="col-xl-3">
+                                <div class="card bg-success text-white mb-4">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Total Recovered:</h5>
+                                        <h1 class="card-text">{{ totalRecovered }}</h1>
+                                    </div>
+                                    <div class="card-footer d-flex align-items-center justify-content-between">
+                                        <a class="small text-white stretched-link" href="/places?place=worldwide">View Details</a>
+                                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                                    </div>
+                                </div>
+                                <div class="card bg-warning text-white mb-4">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Worst Hit Country:</h5>
+                                        <h1 class="card-text">{{ worstHitCountry }}</h1>
+                                    </div>
+                                    <div class="card-footer d-flex align-items-center justify-content-between">
+                                        <a class="small text-white stretched-link" href="/places?place={{ worstHitCountry }}">View Details</a>
+                                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                                    </div>
+                                </div>
+                                <!-- <div class="w-100"></div> -->
+                            </div>
                             <div class="col-xl-6">
-                                <div class="card mb-4 h-100">
+                                <div class="card mb-4">
                                     <div class="card-header">
                                         <i class="fas fa-globe mr-1"></i>
                                         World Map
