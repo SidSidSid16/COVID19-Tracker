@@ -1,6 +1,8 @@
 # COVID-19 Tracker
 A Python web application to track the latest COVID-19 statistics. This is my first ever fully-fledged Python program. Built using the [Bing COVID-19 Dataset](https://github.com/microsoft/Bing-COVID-19-Data/).
 
+### [View the live version by clicking here.](https://covid19.sidsidsid.cf/)
+
 ## Overview
 This application is built using Python-3. It parses the COVID-19 dataset and displays various statistics though a web user interface, with graphs, tables and interactive maps.
 ## Installation
