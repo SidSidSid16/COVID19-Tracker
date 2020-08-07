@@ -307,7 +307,7 @@ def outer_region(outer_region):
     longitude = dataRegion.iloc[0]['Longitude']
     countryName = dataRegion.iloc[0]['Country_Region']
     regionName = outer_region
-    regionsFullName = countryName + ", " + regionName
+    regionsFullName = regionName + ", " + countryName
     map = folium.Map(location = [latitude, longitude], zoom_start = 5, max_bounds=True) 
     innerRegions = allOuterRegionData["AdminRegion2"]
     innerRegions = innerRegions.unique().tolist()
