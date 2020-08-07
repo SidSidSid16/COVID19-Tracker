@@ -10,7 +10,7 @@
                         </ol>
                         <div class="row">
                             <div class="col-xl-12">
-                                <div class="card mb-4 h-100">
+                                <div class="card mb-4">
                                     <div class="card-header">
                                         <i class="fas fa-globe mr-1"></i>
                                         World Map
@@ -26,95 +26,192 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-xl-3">
-                                <div class="card bg-primary text-white mb-4">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Total Cases:</h5>
-                                        <h1 class="card-text">{{ totalCases }}</h1>
+                            <div class="col-xl-6">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="card bg-primary text-white mb-4">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Total Cases:</h5>
+                                                <h1 class="card-text">{{ totalCases }}</h1>
+                                            </div>
+                                            <div class="card-footer d-flex align-items-center justify-content-between">
+                                                <a class="small text-white stretched-link" href="/places?place=worldwide">View Details</a>
+                                                <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-white stretched-link" href="/places?place=worldwide">View Details</a>
-                                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                                    </div>
-                                </div>
-                                <div class="card bg-danger text-white mb-4">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Total Deaths:</h5>
-                                        <h1 class="card-text">{{ totalDeaths }}</h1>
-                                    </div>
-                                    <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-white stretched-link" href="/places?place=worldwide">View Details</a>
-                                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-3">
-                                <div class="card bg-success text-white mb-4">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Total Recovered:</h5>
-                                        <h1 class="card-text">{{ totalRecovered }}</h1>
-                                    </div>
-                                    <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-white stretched-link" href="/places?place=worldwide">View Details</a>
-                                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                                    <div class="col-6">
+                                        <div class="card bg-danger text-white mb-4">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Total Deaths:</h5>
+                                                <h1 class="card-text">{{ totalDeaths }}</h1>
+                                            </div>
+                                            <div class="card-footer d-flex align-items-center justify-content-between">
+                                                <a class="small text-white stretched-link" href="/places?place=worldwide">View Details</a>
+                                                <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="card bg-warning text-white mb-4">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Worst Hit Country:</h5>
-                                        <h1 class="card-text">{{ worstHitCountry }}</h1>
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="card bg-success text-white mb-4">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Total Recovered:</h5>
+                                                <h1 class="card-text">{{ totalRecovered }}</h1>
+                                            </div>
+                                            <div class="card-footer d-flex align-items-center justify-content-between">
+                                                <a class="small text-white stretched-link" href="/places?place=worldwide">View Details</a>
+                                                <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-white stretched-link" href="/places?place={{ worstHitCountry }}">View Details</a>
-                                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                                    <div class="col-6">
+                                        <div class="card bg-warning text-white mb-4">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Worst Hit Country:</h5>
+                                                <h1 class="card-text">{{ worstHitCountry }}</h1>
+                                            </div>
+                                            <div class="card-footer d-flex align-items-center justify-content-between">
+                                                <a class="small text-white stretched-link" href="/places?place={{ worstHitCountry }}">View Details</a>
+                                                <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xl-12">
+                                        <div class="card mb-4">
+                                            <div class="card-header">
+                                                <i class="fas fa-plus mr-1"></i>
+                                                Request a Metric
+                                            </div>
+                                            <div class="card-body">
+                                                You can request a metric to be added! 
+                                                <br><br>
+                                                <a href="https://www.sidsidsid.cf/contact/" target="_blank">Click here</a> to go to a contact form where 
+                                                you can fill out the a feature request.
+                                            </div>
+                                            <div class="card-footer d-flex align-items-center justify-content-between">
+                                                <a class="small text-body" href="/feature-request" target="_blank">Learn more</a>
+                                                <div class="small"><i class="fas fa-angle-right"></i></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xl-12">
+                                        <div class="card mb-4">
+                                            <div class="card-header">
+                                                <i class="fas fa-plus mr-1"></i>
+                                                Search for a Place
+                                            </div>
+                                            <div class="card-body">
+                                                <form action="/search" method="get" id="search_form" class="d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0 input-group">
+                                                    <div class="input-group">
+                                                        <input class="form-control" type="text" name="place" placeholder="Search for a place..." aria-label="Search" aria-describedby="basic-addon2" />
+                                                        <div class="input-group-append">
+                                                            <button class="btn btn-primary" type="submit" value="Submit"><i class="fas fa-search"></i></button>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-xl-6">
                                 <div class="card mb-4">
                                     <div class="card-header">
-                                        <i class="fas fa-plus mr-1"></i>
-                                        Request a Metric
+                                        <i class="fas fa-chart-area mr-1"></i>
+                                        Worldwide Cases and Deaths
                                     </div>
-                                    <div class="card-body">
-                                        You can request a metric to be added! 
-                                        <br><br>
-                                        <a href="https://www.sidsidsid.cf/contact/" target="_blank">Click here</a> to go to a contact form where 
-                                        you can fill out the a feature request.
-                                    </div>
-                                    <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-body" href="/feature-request" target="_blank">Learn more</a>
-                                        <div class="small"><i class="fas fa-angle-right"></i></div>
-                                    </div>
-                                </div>
-                                <div class="card mb-4">
-                                    <div class="card-header">
-                                        <i class="fas fa-plus mr-1"></i>
-                                        Search for a Place
-                                    </div>
-                                    <div class="card-body">
-                                        <form action="/search" method="get" id="search_form" class="d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0 input-group">
-                                            <div class="input-group">
-                                                <input class="form-control" type="text" name="place" placeholder="Search for a place..." aria-label="Search" aria-describedby="basic-addon2" />
-                                                <div class="input-group-append">
-                                                    <button class="btn btn-primary" type="submit" value="Submit"><i class="fas fa-search"></i></button>
-                                                </div>
-                                            </div>
-                                        </form>
-                                    </div>
+                                    <div class="card-body"><canvas id="WorldwideCasesBarChart" width="100%" height="100%"></canvas></div>
+                                    <script>
+                                        // Area Chart Example
+                                    window.onload = function() {
+                                        var ctx = document.getElementById("WorldwideCasesBarChart");
+                                        var myLineChart = new Chart(ctx, {
+                                        type: 'line',
+                                        data: {
+                                            // labels: ["Mar 1", "Mar 2", "Mar 3", "Mar 4", "Mar 5", "Mar 6", "Mar 7", "Mar 8", "Mar 9", "Mar 10", "Mar 11", "Mar 12", "Mar 13"],
+                                            labels: {{ labels | safe }},
+                                            datasets: [{
+                                                label: "Confirmed Cases",
+                                                lineTension: 0.3,
+                                                backgroundColor: "rgba(2,117,216,0.2)",
+                                                borderColor: "rgba(2,117,216,1)",
+                                                pointRadius: 5,
+                                                pointBackgroundColor: "rgba(2,117,216,1)",
+                                                pointBorderColor: "rgba(255,255,255,0.8)",
+                                                pointHoverRadius: 5,
+                                                pointHoverBackgroundColor: "rgba(2,117,216,1)",
+                                                pointHitRadius: 50,
+                                                pointBorderWidth: 2,
+                                                data: {{ WorldwideCases }},
+                                            }, {
+                                                label: "Confirmed Deaths",
+                                                lineTension: 0.3,
+                                                backgroundColor: "rgba(217, 2, 2, 0.2)",
+                                                borderColor: "rgba(217, 2, 2, 1)",
+                                                pointRadius: 5,
+                                                pointBackgroundColor: "rgba(217, 2, 2, 1)",
+                                                pointBorderColor: "rgba(255,255,255,0.8)",
+                                                pointHoverRadius: 5,
+                                                pointHoverBackgroundColor: "rgba(217, 2, 2, 1)",
+                                                pointHitRadius: 50,
+                                                pointBorderWidth: 2,
+                                                data: {{ WorldwideDeaths }},
+                                            }],
+                                        },
+                                        options: {
+                                            scales: {
+                                            xAxes: [{
+                                                time: {
+                                                unit: 'date'
+                                                },
+                                                gridLines: {
+                                                display: false
+                                                },
+                                                ticks: {
+                                                maxTicksLimit: 12
+                                                }
+                                            }],
+                                            yAxes: [{
+                                                ticks: {
+                                                min: 0,
+                                                //max: {{ maximumValue }},
+                                                maxTicksLimit: 5
+                                                },
+                                                gridLines: {
+                                                color: "rgba(0, 0, 0, .125)",
+                                                }
+                                            }],
+                                            },
+                                            legend: {
+                                            display: true
+                                            }
+                                        }
+                                        });
+                                    };
+                                    </script>
                                 </div>
                             </div>
                         </div>
-                        <div class="card mb-4">
-                            <div class="card-header">
-                                <i class="fas fa-table mr-1"></i>
-                                <a name="directory"></a>Latest Data From All Places</a>
-                            </div>
-                            <div class="card-body">
-                                <div class="table-responsive">
-                                    {% for table in tables %}
-                                        {{ table|safe }}
-                                    {% endfor %}
+                        <div class="row">
+                            <div class="col-xl-12">
+                                <div class="card mb-4">
+                                    <div class="card-header">
+                                        <i class="fas fa-table mr-1"></i>
+                                        <a name="directory"></a>Latest Data From All Places</a>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="table-responsive">
+                                            {% for table in tables %}
+                                                {{ table|safe }}
+                                            {% endfor %}
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
