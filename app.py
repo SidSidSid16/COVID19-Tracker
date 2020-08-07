@@ -138,7 +138,7 @@ def createWorldMap():
         recovered = str(df.iloc[0]['Recovered'])
         tooltip = country_name
         popUp = "<i><b>"+country_name+"</b>"+"\n\n\n"+"Confirmed: \n"+confirmed+"\n\n"+"Deaths: \n"+deaths+"\n\n"+"Recovered: \n"+recovered+"\n\n"+"Last updated: \n"+updatedText+"</i>"
-        folium.Marker([latitude, longitude], popup=popUp, tooltip=tooltip).add_to(map)
+        folium.CircleMarker(location=[latitude, longitude], popup=popUp, tooltip=tooltip, radius=2).add_to(map)
     worldMap = map
     return worldMap._repr_html_()
 
@@ -293,7 +293,8 @@ def inner_region(inner_region):
         recovered = str(dataRegion.iloc[0]['Recovered'])
         tooltip = inner_region
         popUp = "<i><b>"+inner_region+"</b>"+"\n\n\n"+"Confirmed: \n"+confirmed+"\n\n"+"Deaths: \n"+deaths+"\n\n"+"Recovered: \n"+recovered+"\n\n"+"Last updated: \n"+updatedText+"</i>"
-        folium.Marker([latitudeRegion, longitudeRegion], popup=popUp, tooltip=tooltip).add_to(map)
+        # folium.Marker([latitudeRegion, longitudeRegion], popup=popUp, tooltip=tooltip).add_to(map)
+        folium.CircleMarker(location=[latitudeRegion, longitudeRegion], popup=popUp, tooltip=tooltip, radius=2).add_to(map)
     return render_template("place.html", placeNameFull = regionsFullName, placeName = regionName, latestDate = lastupdated.strftime('%d/%m/%Y'), totalCases = "{:,}".format(totalcases), totalDeaths = "{:,}".format(totalDeaths), totalRecovered = "{:,}".format(totalRecovered), placeMap = map._repr_html_())
 
 def outer_region(outer_region): 
@@ -327,7 +328,8 @@ def outer_region(outer_region):
             recovered = str(df.iloc[0]['Recovered'])
             tooltip = region
             popUp = "<i><b>"+region+"</b>"+"\n\n\n"+"Confirmed: \n"+confirmed+"\n\n"+"Deaths: \n"+deaths+"\n\n"+"Recovered: \n"+recovered+"\n\n"+"Last updated: \n"+updatedText+"</i>"
-            folium.Marker([latitudeRegion, longitudeRegion], popup=popUp, tooltip=tooltip).add_to(map)
+            # folium.Marker([latitudeRegion, longitudeRegion], popup=popUp, tooltip=tooltip).add_to(map)
+            folium.CircleMarker(location=[latitudeRegion, longitudeRegion], popup=popUp, tooltip=tooltip, radius=2).add_to(map)
     return render_template("place.html", placeNameFull = regionsFullName, placeName = regionName, latestDate = lastupdated.strftime('%d/%m/%Y'), totalCases = "{:,}".format(totalcases), totalDeaths = "{:,}".format(totalDeaths), totalRecovered = "{:,}".format(totalRecovered), placeMap = map._repr_html_())
 
 def country(country): 
@@ -359,7 +361,8 @@ def country(country):
             recovered = str(df.iloc[0]['Recovered'])
             tooltip = region
             popUp = "<i><b>"+region+"</b>"+"\n\n\n"+"Confirmed: \n"+confirmed+"\n\n"+"Deaths: \n"+deaths+"\n\n"+"Recovered: \n"+recovered+"\n\n"+"Last updated: \n"+updatedText+"</i>"
-            folium.Marker([latitudeRegion, longitudeRegion], popup=popUp, tooltip=tooltip).add_to(map)
+            # folium.Marker([latitudeRegion, longitudeRegion], popup=popUp, tooltip=tooltip).add_to(map)
+            folium.CircleMarker(location=[latitudeRegion, longitudeRegion], popup=popUp, tooltip=tooltip, radius=2).add_to(map)
     return render_template("place.html", placeNameFull = country, placeName = country, latestDate = lastupdated.strftime('%d/%m/%Y'), totalCases = "{:,}".format(totalcases), totalDeaths = "{:,}".format(totalDeaths), totalRecovered = "{:,}".format(totalRecovered), placeMap = map._repr_html_())
 
 @app.route("/search")
