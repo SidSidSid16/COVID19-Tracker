@@ -1,11 +1,6 @@
 # COVID-19 Tracker
 
-<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-<input type="hidden" name="cmd" value="_s-xclick" />
-<input type="hidden" name="hosted_button_id" value="QUKYBPVMTUCV4" />
-<input type="image" src="https://img.shields.io/badge/Donate-Card%20/%20PayPal-blue" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button" />
-<img alt="" border="0" src="https://www.paypal.com/en_GB/i/scr/pixel.gif" width="1" height="1" />
-</form>
+[![Donate](https://img.shields.io/badge/Donate-Card%20/%20PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=X3D2CQF7798G8&source=url)
 
 A Python web application to track the latest COVID-19 statistics. This is my first ever fully-fledged Python program. Built using the [Bing COVID-19 Dataset](https://github.com/microsoft/Bing-COVID-19-Data/).
 
@@ -41,9 +36,4 @@ You can support this project by helping improve the code. Not only would the cod
 
 You can also donate to not only support the running costs of my server, but to also encourage me! 
 
-<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-<input type="hidden" name="cmd" value="_s-xclick" />
-<input type="hidden" name="hosted_button_id" value="QUKYBPVMTUCV4" />
-<input type="image" src="https://img.shields.io/badge/Donate-Card%20/%20PayPal-blue" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button" />
-<img alt="" border="0" src="https://www.paypal.com/en_GB/i/scr/pixel.gif" width="1" height="1" />
-</form>
+[![Donate](https://img.shields.io/badge/Donate-Card%20/%20PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=X3D2CQF7798G8&source=url)
