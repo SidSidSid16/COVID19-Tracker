@@ -434,7 +434,34 @@ def places(place):
     elif place in regions2:
         return inner_region(place.title())
     else:
-        abort(404)
+        closeMatchCountry = get_close_matches(place, countries, n=5, cutoff=0.1)
+        closeMatchRegion1 = get_close_matches(place, regions1, n=5, cutoff=0.1)
+        closeMatchRegion2 = get_close_matches(place, regions2, n=5, cutoff=0.1)
+        df_SuggestedCountries = pandas.DataFrame(closeMatchCountry)
+        df_SuggestedRegions1 = pandas.DataFrame(closeMatchRegion1)
+        df_SuggestedRegions2 = pandas.DataFrame(closeMatchRegion2)
+        if (df_SuggestedCountries.shape[0] == 0 & df_SuggestedRegions1.shape[0] == 0 & df_SuggestedRegions2.shape[0] == 0):
+            return render_template('search-empty.html', searchTerm = place)
+        else:
+            df_SuggestedCountries.index.name = '#'
+            df_SuggestedCountries.columns.name = df_SuggestedCountries.index.name
+            df_SuggestedCountries.index.name = None
+            df_SuggestedRegions1.index.name = '#'
+            df_SuggestedRegions1.columns.name = df_SuggestedRegions1.index.name
+            df_SuggestedRegions1.index.name = None
+            df_SuggestedRegions2.index.name = '#'
+            df_SuggestedRegions2.columns.name = df_SuggestedRegions2.index.name
+            df_SuggestedRegions2.index.name = None
+            df_SuggestedCountries.rename(columns={0: "Country"}, inplace=True)
+            df_SuggestedRegions1.rename(columns={0: "Outer Region"}, inplace=True)
+            df_SuggestedRegions2.rename(columns={0: "Inner Region"}, inplace=True)
+            df_SuggestedCountries[u'Country'] = df_SuggestedCountries[u'Country'].apply(lambda x: make_hyperlink(x))
+            df_SuggestedRegions1[u'Outer Region'] = df_SuggestedRegions1[u'Outer Region'].apply(lambda x: make_hyperlink(x))
+            df_SuggestedRegions2[u'Inner Region'] = df_SuggestedRegions2[u'Inner Region'].apply(lambda x: make_hyperlink(x))
+            df_SuggestedCountriesHTML=[df_SuggestedCountries.to_html(classes=['404-suggestions-data', 'table', 'table-striped', 'table-borderless'], header="true", justify='left', render_links=True, escape=False)]
+            df_SuggestedRegions1HTML=[df_SuggestedRegions1.to_html(classes=['404-suggestions-data', 'table', 'table-striped', 'table-borderless'], header="true", justify='left', render_links=True, escape=False)]
+            df_SuggestedRegions2HTML=[df_SuggestedRegions2.to_html(classes=['404-suggestions-data', 'table', 'table-striped', 'table-borderless'], header="true", justify='left', render_links=True, escape=False)]
+            return render_template('404-suggestions.html', searchTerm = place, tblCountries = df_SuggestedCountriesHTML, tblRegions1 = df_SuggestedRegions1HTML, tblRegions2 = df_SuggestedRegions2HTML)
     return render_template("place.html")
 
 @app.route("/world-map")
