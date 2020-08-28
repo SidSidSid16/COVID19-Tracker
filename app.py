@@ -162,7 +162,7 @@ def createWorldCasesChart():
     df.sort_values(by=['Updated'], inplace=True, ascending=True)
     last = df.iloc[0]['Updated']
     diff = ((first - last)/numpy.timedelta64(1, 'M'))
-    diff = int(diff) + 1
+    diff = int(diff)
     months = numpy.arange(1, diff+1, 1)
     cases = []
     deaths = []
