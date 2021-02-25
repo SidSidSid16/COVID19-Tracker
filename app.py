@@ -101,62 +101,6 @@ def createWorldMap():
         worldMapComputePercent = round((countriesProcessed/totalCountries)*100)
         # print("[INFO] Map " + str(worldMapComputePercent) + "'%' initialised")
     worldMap = map
-<<<<<<< Updated upstream
-    return worldMap._repr_html_()
-
-legend = None
-labels = None
-WorldwideCases = None
-WorldwideDeaths = None
-minimum_value = None
-def createWorldCasesChart():
-    global legend
-    global labels
-    global WorldwideCases
-    global WorldwideDeaths
-    global maximum_value
-    legend = 'Cases Worldwide'
-    country = "Worldwide"
-    df = df_entireDataset.copy()
-    df.query('Country_Region == @country', inplace=True)
-    df.sort_values(by=['Updated'], inplace=True, ascending=False)
-    first = df.iloc[0]['Updated']
-    df.sort_values(by=['Updated'], inplace=True, ascending=True)
-    last = df.iloc[0]['Updated']
-    diff = ((first - last)/numpy.timedelta64(1, 'M'))
-    diff = int(diff)
-    months = numpy.arange(1, diff+1, 1)
-    cases = []
-    deaths = []
-    df = df_entireDataset.copy()
-    for month in months:
-        day = monthrange(2020, month)[1]
-        date = pandas.Timestamp(year=2020, month=month, day=day)
-        this_df = df.query('Updated == @date')
-        totalCases = int(this_df.iloc[0]['Confirmed'])
-        totalDeaths = int(this_df.iloc[0]['Deaths'])
-        cases.append(totalCases)
-        deaths.append(totalDeaths)
-    newList = []
-    for month in months:
-        month_name = str(calendar.month_name[month])
-        newList.append(month_name)
-    months = newList
-    df = df_entireDataset.copy()
-    df.sort_values(by=['Confirmed'], inplace=True, ascending=False)
-    maximum_value = int(this_df.iloc[0]['Confirmed']) + (int(this_df.iloc[0]['Confirmed'])/2)
-    legend = legend
-    # labels = months.tolist()
-    labels = months
-    WorldwideCases = cases
-    WorldwideDeaths = deaths
-
-def make_hyperlink(value):
-    if value != "China":
-        url = "/places?place={}"
-        # return '=HYPERLINK("%s", "%s")' % (url.format(value), value)
-        return u'<a href="%s">%s</a>' % (url.format(value), value)
-=======
     print("[INFO] Map initialised")
     
 def returnWorldMap():
@@ -203,7 +147,6 @@ def returnWorldMap():
         </script>
         
         '''
->>>>>>> Stashed changes
     else:
         return worldMap._repr_html_()
 
