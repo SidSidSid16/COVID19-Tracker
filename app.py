@@ -168,6 +168,9 @@ def progressWorldMap():
             yield "data:" + str(worldMapComputePercent) + "\n\n"
     return Response(checkProgress(), mimetype= 'text/event-stream')
     
+@app.template_filter()
+def addCommaSeparator(number):
+    return format(int(number), ',d')
 
 if __name__ == "__main__":
     t = threading.Thread(target=initialise)
