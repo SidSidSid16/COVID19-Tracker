@@ -1,0 +1,185 @@
+{% extends "base.html" %}
+
+
+{% block title %}COVID-19 Tracker - Home{% endblock %}
+
+{% block content %}
+
+<!-- Page Heading -->
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h1 mb-0 text-gray-800">Worldwide</h1>
+</div>
+
+<!-- Content Row -->
+<div class="row w-100 m-0">
+    <div class="col-xl-6 col-md-12">
+        <div class="row h-100 w-100 m-0">
+            <!-- Total Cases Card -->
+            <div class="col-12 mb-4">
+                <div class="card border-left-primary shadow h-100 w-100 py-2">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                    Current Total Cases</div>
+                                <div class="h2 mb-0 font-weight-bold text-gray-800">{{ total_cases_active }}</div>
+                            </div>
+                            <div class="col-auto">
+                                <i class="fas fa-viruses fa-2x text-gray-300"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Total Deaths Card -->
+            <div class="col-12 mb-4">
+                <div class="card border-left-danger shadow h-100 w-100 py-2">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">
+                                    Total Deaths</div>
+                                <div class="h2 mb-0 font-weight-bold text-gray-800">{{ total_deaths }}</div>
+                            </div>
+                            <div class="col-auto">
+                                <i class="fas fa-dizzy fa-2x text-gray-300"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Total Recovered Card -->
+            <div class="col-12 mb-4">
+                <div class="card border-left-success shadow h-100 w-100 py-2">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                    Total Recovered</div>
+                                <div class="h2 mb-0 font-weight-bold text-gray-800">{{ total_recovered }}</div>
+                            </div>
+                            <div class="col-auto">
+                                <i class="fas fa-virus-slash fa-2x text-gray-300"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- World Map Card -->
+    <div class="col-xl-6 col-md-12" id="worldMapContainer">
+        <div class="row w-100 h-100 m-0">
+            <div class="col-12 mb-4">
+                <div class="card border-left-warning shadow h-100 py-2">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center h-100">
+                            <div class="col mr-2 h-100">
+                                <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                    World Map</div>
+                                <div id="worldMap" class="h5 mb-0 font-weight-bold text-gray-800">{{ worldMap | safe }}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<hr>
+<!-- Content Row -->
+
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h1 mb-0 text-gray-800">Breakdown</h1>
+</div>
+
+{% for country,data in country_data_table.items() %}
+    <div class="d-sm-flex align-items-center justify-content-between mb-1">
+        <h3 class="h4 mb-0 text-gray-800">{{ country }}</h3>
+    </div>
+
+    <div class="row">
+
+        <!-- Total Cases Card -->
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-primary shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                Current Total Cases</div>
+                            <div class="h3 mb-1 font-weight-bold text-gray-800">{{ data[0] }}</div>
+                            <div class="text-xs mb-0 font-weight-bold text-primary">... of which <span class="h6 mb-0 font-weight-bold text-gray-800">{{ data[6] }}</span> are critical, 
+                            and <span class="h6 mb-0 font-weight-bold text-gray-800">{{ data[4] }}</span> are new.</div>
+
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-viruses fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Total Deaths Card -->
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-danger shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">
+                                Total Deaths</div>
+                            <div class="h3 mb-1 font-weight-bold text-gray-800">{{ data[1] }}</div>
+                            <div class="text-xs mb-0 font-weight-bold text-danger">... of which <span class="h6 mb-0 font-weight-bold text-gray-800">{{ data[5] }}</span> are new.</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-dizzy fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Total Recovered Card -->
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-success shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                Total Recovered</div>
+                            <div class="h3 mb-1 font-weight-bold text-gray-800">{{ data[2] }}</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-virus-slash fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Total tested card -->
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-warning shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                Total Tested</div>
+                            <div class="h3 mb-1 font-weight-bold text-gray-800">{{ data[3] }}</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-vials fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr>
+{% endfor %}
+
+{% endblock content %}
