@@ -173,4 +173,4 @@ if __name__ == "__main__":
     t = threading.Thread(target=initialise)
     t.daemon = True
     t.start()
-    app.run(host='0.0.0.0', debug = True, threaded=True,)
+    app.run(host='0.0.0.0', debug = False, threaded=True,)
