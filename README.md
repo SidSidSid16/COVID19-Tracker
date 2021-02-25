@@ -2,7 +2,7 @@
 
 [![Donate](https://img.shields.io/badge/Donate-Card%20/%20PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=X3D2CQF7798G8&source=url)
 
-A Python web application to track the latest COVID-19 statistics. This is my first ever fully-fledged Python program. Built using the [Bing COVID-19 Dataset](https://github.com/microsoft/Bing-COVID-19-Data/).
+A Python web application to track the latest COVID-19 statistics.
 
 ### [View the live version by clicking here.](https://covid19.sidsidsid.cf/)
 
